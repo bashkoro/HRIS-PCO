@@ -2,21 +2,50 @@
   "version": 2,
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.7.1"
+      "runtime": "vercel-php@0.7.4"
     }
   },
   "routes": [
     {
-      "src": "/(css|js|images)/(.*)",
-      "dest": "public/$1/$2"
+      "src": "/favicon.ico",
+      "dest": "public/favicon.ico"
     },
     {
-      "src": "/build/(.*)",
+      "src": "/robots.txt",
+      "dest": "public/robots.txt"
+    },
+    {
+      "src": "/build/manifest.json",
+      "dest": "public/build/manifest.json"
+    },
+    {
+      "src": "/build/assets/(.+)",
+      "dest": "public/build/assets/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/build/(.+)",
       "dest": "public/build/$1"
     },
     {
-      "src": "/storage/(.*)",
+      "src": "/(css|js|img)/(.+)",
+      "dest": "public/$1/$2",
+      "headers": {
+        "Cache-Control": "public, max-age=3600"
+      }
+    },
+    {
+      "src": "/storage/(.+)",
       "dest": "storage/app/public/$1"
+    },
+    {
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot))$",
+      "dest": "public/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000"
+      }
     },
     {
       "src": "/(.*)",
@@ -26,6 +55,9 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "false",
+    "APP_KEY": "base64:Kg814uBFYTRRuG1zuhptL0z952s7Kp2Eb3lR9GMwyqY=",
+    "APP_URL": "https://hris-pco.vercel.app",
+    "ASSET_URL": "https://hris-pco.vercel.app",
     "APP_CONFIG_CACHE": "/tmp/config.php",
     "APP_EVENTS_CACHE": "/tmp/events.php",
     "APP_PACKAGES_CACHE": "/tmp/packages.php",
