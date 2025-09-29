@@ -37,5 +37,8 @@
     "SESSION_DRIVER": "cookie",
     "DB_CONNECTION": "sqlite",
     "DB_DATABASE": "/tmp/database.sqlite"
-  }
+  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "installCommand": "npm install"
 }

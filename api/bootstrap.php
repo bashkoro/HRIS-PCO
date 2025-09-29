@@ -6,10 +6,9 @@ require __DIR__ . '/../vendor/autoload.php';
 $app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // Initialize database for serverless environment
-if (getenv('VERCEL')) {
-    // Create temporary SQLite database
-    $dbPath = '/tmp/database.sqlite';
-    if (!file_exists($dbPath)) {
+$dbPath = '/tmp/database.sqlite';
+if (!file_exists($dbPath)) {
+    try {
         touch($dbPath);
 
         // Run migrations and seeders
@@ -18,6 +17,9 @@ if (getenv('VERCEL')) {
         $kernel->call('db:seed', ['--class' => 'HRISSeeder', '--force' => true]);
         $kernel->call('db:seed', ['--class' => 'HakKeuanganSeeder', '--force' => true]);
         $kernel->call('db:seed', ['--class' => 'BuktiPotongPajakSeeder', '--force' => true]);
+    } catch (Exception $e) {
+        // Silently handle database initialization errors
+        error_log('Database initialization failed: ' . $e->getMessage());
     }
 }
 
