@@ -119,10 +119,10 @@ class PresensiController extends Controller
     private function isOutsideOffice($lat, $lng)
     {
         // PCO Office coordinates
-        $office1Lat = -6.169067;
-        $office1Lng = 106.825635;
-        $office2Lat = -6.1751660136989335;
-        $office2Lng = 106.8311075439858;
+        $office1Lat = -6.168950;
+        $office1Lng = 106.825747;
+        $office2Lat = -6.175281;
+        $office2Lng = 106.831562;
         $radius = 100; // meters
 
         // Check distance to both offices
