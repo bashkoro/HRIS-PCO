@@ -8,9 +8,9 @@ class HRISMap {
         this.map = null;
         this.marker = null;
         // PCO Office locations
-        this.office1Location = { lat: -6.169067, lng: 106.825635 }; // Main office
-        this.office2Location = { lat: -6.1751660136989335, lng: 106.8311075439858 }; // Second office
-        this.officeRadius = 30; // meters
+        this.office1Location = { lat: -6.168932, lng: 106.825773 }; // Main office
+        this.office2Location = { lat: -6.175254, lng: 106.831607 }; // Second office
+        this.officeRadius = 75; // meters
         this.currentPosition = null;
         this.presensiType = 'masuk';
         this.capturedPhoto = null;
